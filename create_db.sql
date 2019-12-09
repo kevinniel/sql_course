@@ -1,3 +1,9 @@
+-- Création de la base de données "Espèce"
+CREATE DATABASE espece;
+
+-- Utilisation de la base de données "Espèce"
+-- ## USE espece;
+
 -- Création de la table "animal"
 CREATE TABLE IF NOT EXISTS Animal (
 	-- Définition des champs
