@@ -84,24 +84,38 @@ AND
 	Animal.pere_id IS NOT NULL
 
 
+-- Vous devez obtenir la liste des animaux dont 
+-- on connaît le père,
+-- la mère,
+-- la race,
+-- la race du père,
+-- la race de la mère.
+-- Affichez le nom et la race de l'animal et de ses parents,
+-- ainsi que l'espèce de l'animal (pas des parents).
 
-
-
-
-
-
-
-
-
-
--- Vous devez obtenir la liste des animaux dont on connaît le père,
--- la mère, la race, la race du père, la race de la mère. Affichez
--- le nom et la race de l'animal et de ses parents, ainsi que l'espèce de
--- l'animal (pas des parents).
-
-
-
-
+SELECT
+	Animal.id,
+	Animal.nom,
+	Espece.nom_courant as nom_espece,
+	Race.nom as nom_race,
+	animal_pere.nom as nom_pere,
+	race_pere.nom as nom_race_pere,
+	animal_mere.nom as nom_mere,
+	race_mere.nom as nom_race_mere
+FROM
+	Animal
+INNER JOIN Animal as animal_pere
+	ON animal_pere.id = Animal.pere_id
+INNER JOIN Animal as animal_mere
+	ON animal_mere.id = Animal.mere_id
+INNER JOIN Espece
+	ON Espece.id = Animal.espece_id
+INNER JOIN Race
+	ON Race.id = Animal.race_id
+INNER JOIN Race as race_pere
+	ON race_pere.id = animal_pere.race_id
+INNER JOIN Race as race_mere
+	ON race_mere.id = animal_mere.race_id
 
 
 
